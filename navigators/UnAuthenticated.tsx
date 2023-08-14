@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import OnboardingScreen from "../screens/UnAuthenticated/OnboardingScreen";
 import { UnAuthenticatedStackParamList } from "../types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import OnboardingScreen from "../screens/unAuthenticated/Onboarding";
+import LoginScreen from "../screens/unAuthenticated/Login";
 
 const UnAuthenticatedStack =
   createNativeStackNavigator<UnAuthenticatedStackParamList>();
 
-export default function RootNavigator() {
+export default function UnAuthenticatedNavigator() {
   const [isAppFirstLaunched, setIsAppFirstLaunched] = useState<boolean | null>(
     null
   );
@@ -41,15 +42,17 @@ export default function RootNavigator() {
   }
 
   return (
-    <UnAuthenticatedStack.Navigator>
+    <UnAuthenticatedStack.Navigator
+      initialRouteName={isAppFirstLaunched ? "OnBoarding" : "Login"}
+    >
       <UnAuthenticatedStack.Screen
-        name="Onboarding"
+        name="OnBoarding"
         component={OnboardingScreen}
         options={{ headerShown: false }}
       />
       <UnAuthenticatedStack.Screen
-        name="Auth"
-        // component={AuthNavigator}
+        name="Login"
+        component={LoginScreen}
         options={{ headerShown: false }}
       />
     </UnAuthenticatedStack.Navigator>

@@ -25,6 +25,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import OnboardingScreen from "./screens/unAuthenticated/Onboarding";
 import { NavigationContainer } from "@react-navigation/native";
+import UnAuthenticatedNavigator from "./navigators/UnAuthenticated";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -63,7 +64,7 @@ export default function App() {
       <SafeAreaProvider>
         <StatusBar style="dark" translucent={true} />
         <NavigationContainer>
-          <OnboardingScreen />
+          <UnAuthenticatedNavigator />
         </NavigationContainer>
       </SafeAreaProvider>
     );

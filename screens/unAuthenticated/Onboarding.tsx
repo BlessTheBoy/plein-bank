@@ -27,6 +27,7 @@ import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { colors, textStyles } from "../../styles";
 import Button from "../../components/Button";
 import { MaterialIcons } from "@expo/vector-icons";
+import { OnBoardingScreenProps } from "../../types";
 
 const { width, height } = Dimensions.get("window");
 
@@ -102,10 +103,9 @@ const Slide = ({ item }: { item: SlideItem }) => {
   );
 };
 
-export default function OnboardingScreen(props: any) {
+export default function OnboardingScreen(props: OnBoardingScreenProps) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const slideRef = useRef<FlatList<SlideItem>>(null);
-  // const navigation = useNavigation<OnboardingScreenNavigationProp>();
 
   const updateCurrentSlideIndex = (
     e: NativeSyntheticEvent<NativeScrollEvent>
@@ -172,11 +172,7 @@ export default function OnboardingScreen(props: any) {
             <Button
               label="Log in"
               style={{ marginBottom: 28 }}
-              // onPress={() =>
-              //   navigation.replace("Auth", {
-              //     screen: "Create Account",
-              //   })
-              // }
+              onPress={() => props.navigation.replace("Login")}
             />
             <Button
               label="Register"
