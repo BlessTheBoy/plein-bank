@@ -23,4 +23,9 @@ export const textStyles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
   },
+  label_large: {
+    fontSize: 14,
+    fontFamily: "Poppins_400Regular",
+    lineHeight: 20,
+  },
 });
